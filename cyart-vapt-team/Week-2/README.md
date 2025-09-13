@@ -1,4 +1,4 @@
-# Week-2 VAPT Assignment – DVWA SQL Injection Lab
+# Week-2 VAPT Assignment 
 
 ## Objective
 The goal of this assignment is to simulate a **Vulnerability Assessment & Penetration Test (VAPT)** on the Damn Vulnerable Web Application (**DVWA**) running in Docker.  
