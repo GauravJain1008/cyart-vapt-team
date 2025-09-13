@@ -11,3 +11,4 @@ We focus on identifying, exploiting, and documenting **SQL Injection vulnerabili
 **Start DVWA in Docker:**
 ```bash
 sudo docker run -it -p 8080:80 vulnerables/web-dvwa
+Verify:
