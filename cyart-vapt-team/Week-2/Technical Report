@@ -1,0 +1,7 @@
+Technical Report 
+
+During an authorized lab assessment of DVWA hosted at http://localhost:8080, I performed reconnaissance, scanning, exploitation, and evidence collection following PTES/OWASP guidance. Initial scanning with Nmap identified Apache HTTPD on port 8080. Nikto confirmed missing security headers, directory indexing under /config/, and an outdated Apache version. Manual verification of DVWA confirmed the SQL Injection lab page; I set DVWA security to low for testing.
+
+Using sqlmap (with an authenticated PHPSESSID cookie) I confirmed an SQL Injection in the id parameter. Sqlmap enumerated databases (dvwa, information_schema), listed dvwa tables (users, guestbook), and successfully dumped the users table. Extracted entries included usernames and MD5-hashed passwords; sqlmap cracked common hashes revealing passwords such as password, abc123, and letmein. Evidence files (sqlmap output CSVs) and a hashed artifact (target.conf.sha256) were saved in the repo.
+
+Impact: an attacker could exfiltrate user credentials and escalate to application-level compromise. Recommendations: remediate immediately by using parameterized queries / prepared statements, implement input validation and least privilege on DB accounts, enable HttpOnly and Secure cookie flags, update Apache, and deploy WAF/IDS rules. Re-scan after fixes and perform authenticated vulnerability scans.
